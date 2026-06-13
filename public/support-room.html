@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>AtomQuest Support Platform</title>
+
+<link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+
+<div class="navbar">
+
+    <div class="logo">
+        🚀 AtomQuest Support
+    </div>
+
+    <div class="status">
+        🟢 Call In Progress
+    </div>
+
+</div>
+
+<div class="top-bar">
+
+    <div class="token">
+        Token: D6CB52
+    </div>
+
+    <button
+    class="invite-btn"
+    onclick="shareInvite()">
+    🔗 Share Invite
+    </button>
+
+</div>
+
+<div class="main-container">
+
+    <div class="video-section">
+
+        <div class="video-box">
+
+            <video id="agentVideo"
+                   autoplay
+                   muted>
+            </video>
+
+            <div class="label">
+                You (Agent)
+            </div>
+
+        </div>
+
+        <div class="video-box">
+
+            <div class="customer-placeholder">
+                C
+            </div>
+
+            <div class="label">
+                Customer (Online)
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="chat-section">
+
+        <div class="chat-header">
+
+            Support Chat & Log
+
+            <span class="participants">
+                Participants : 2
+            </span>
+
+        </div>
+
+        <div class="messages" id="messages">
+
+            <div>
+                Welcome to the Support Session.
+            </div>
+
+        </div>
+
+        <div class="chat-input">
+
+        <input
+        type="text"
+        id="messageInput"
+        placeholder="Type a message..."
+        >
+
+           <button onclick="sendMessage()">
+            Send
+            </button>
+
+        </div>
+
+        <input
+        type="file"
+        id="fileInput"
+        style="display:none"
+        >
+
+        <button
+        class="attach-btn"
+        onclick="document.getElementById('fileInput').click()">
+        📎 Attach File / Image
+        </button>
+
+    </div>
+
+</div>
+
+<div class="controls">
+
+    <button
+    class="control-btn"
+    id="micBtn"
+    onclick="toggleMic()">
+    🎤
+    </button>
+
+    <button
+    class="control-btn"
+    id="camBtn"
+    onclick="toggleCamera()">
+    📹
+    </button>
+
+    <button
+    class="control-btn end"
+    onclick="endCall()">
+    📞
+    </button>
+
+    <button class="control-btn">
+        📷
+    </button>
+
+</div>
+
+<script>
+
+let localStream;
+
+navigator.mediaDevices
+.getUserMedia({
+video:true,
+audio:true
+})
+.then(stream=>{
+
+localStream = stream;
+
+document
+.getElementById("agentVideo")
+.srcObject = stream;
+
+})
+.catch(err=>{
+
+alert("Camera/Microphone permission denied.");
+
+console.error(err);
+
+});
+
+function sendMessage(){
+
+const input =
+document.getElementById("messageInput");
+
+const messages =
+document.getElementById("messages");
+
+if(input.value.trim() === "") return;
+
+const div =
+document.createElement("div");
+
+div.style.marginBottom = "10px";
+div.style.padding = "10px";
+div.style.background = "#1e293b";
+div.style.borderRadius = "8px";
+
+div.innerText =
+"You: " + input.value;
+
+messages.appendChild(div);
+
+messages.scrollTop =
+messages.scrollHeight;
+
+input.value = "";
+
+}
+
+function shareInvite(){
+
+navigator.clipboard.writeText(
+window.location.href
+);
+
+alert("Invite Link Copied!");
+
+}
+
+function toggleMic(){
+
+if(!localStream) return;
+
+const audioTrack =
+localStream.getAudioTracks()[0];
+
+if(!audioTrack) return;
+
+audioTrack.enabled =
+!audioTrack.enabled;
+
+document.getElementById("micBtn").innerText =
+audioTrack.enabled ? "🎤" : "🔇";
+
+}
+
+function toggleCamera(){
+
+if(!localStream) return;
+
+const videoTrack =
+localStream.getVideoTracks()[0];
+
+if(!videoTrack) return;
+
+videoTrack.enabled =
+!videoTrack.enabled;
+
+document.getElementById("camBtn").innerText =
+videoTrack.enabled ? "📹" : "🚫";
+
+}
+
+function endCall(){
+
+if(!localStream) return;
+
+localStream.getTracks().forEach(track=>{
+track.stop();
+});
+
+document
+.getElementById("agentVideo")
+.srcObject = null;
+
+alert("Call Ended");
+
+}
+document
+.getElementById("messageInput")
+.addEventListener("keypress",function(e){
+
+if(e.key==="Enter"){
+sendMessage();
+}
+
+});
+
+</script>
+
+</body>
+</html>
