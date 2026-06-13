@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Agent Dashboard</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<h1>🎧 Support Agent Dashboard</h1>
+
+<div class="card">
+    <button onclick="createSession()">Create Session</button>
+
+    <h3>Session Link</h3>
+
+    <input
+        type="text"
+        id="sessionLink"
+        readonly
+        style="width:80%;padding:10px;"
+    >
+</div>
+
+<script>
+function createSession(){
+
+    const sessionId =
+    Math.random().toString(36).substring(2,10);
+
+    const link =
+    window.location.origin +
+    "/customer.html?session=" +
+    sessionId;
+
+    document.getElementById("sessionLink").value =
+    link;
+}
+</script>
+
+</body>
+</html>

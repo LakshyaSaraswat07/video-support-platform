@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Customer Join</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<h1>👨 Customer Session</h1>
+
+<h3 id="sessionText"></h3>
+
+<video
+id="localVideo"
+autoplay
+muted
+></video>
+
+<br><br>
+
+<button id="startBtn">
+Start Camera
+</button>
+
+<script>
+
+const params =
+new URLSearchParams(window.location.search);
+
+const session =
+params.get("session");
+
+document.getElementById("sessionText")
+.innerText =
+"Session ID: " + session;
+
+const startBtn =
+document.getElementById("startBtn");
+
+const localVideo =
+document.getElementById("localVideo");
+
+startBtn.addEventListener("click",
+async()=>{
+
+const stream =
+await navigator.mediaDevices.getUserMedia({
+video:true,
+audio:true
+});
+
+localVideo.srcObject =
+stream;
+
+});
+
+</script>
+
+</body>
+</html>
