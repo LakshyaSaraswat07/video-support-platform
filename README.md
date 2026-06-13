@@ -1,26 +1,29 @@
-# Video Support Platform
+# 🚀 AtomQuest Support Platform
 
-## Overview
+## 📌 Project Overview
 
-Video Support Platform is a web-based customer support system that allows support agents and customers to connect through video-enabled support sessions.
+AtomQuest Support Platform is a browser-based customer support system that allows a support agent and customer to connect through a simple video support interface.
 
-## Features
+The platform provides:
 
-* Agent Dashboard
-* Session Creation
-* Shareable Session Link
-* Customer Join Page
-* Session ID Tracking
-* Camera Access
-* Socket.IO Integration
-* Responsive User Interface
+* 🎥 Live camera access
+* 💬 Real-time chat interface
+* 🔗 Invite link sharing
+* 📎 File/Image attachment support
+* 🎤 Microphone controls
+* 📹 Camera controls
+* 📞 Call termination feature
 
-## Technology Stack
+The project is designed as a lightweight prototype for customer support and troubleshooting sessions.
+
+---
+
+## 🛠 Technology Stack
 
 ### Frontend
 
-* HTML
-* CSS
+* HTML5
+* CSS3
 * JavaScript
 
 ### Backend
@@ -29,7 +32,40 @@ Video Support Platform is a web-based customer support system that allows suppor
 * Express.js
 * Socket.IO
 
-## Project Structure
+### Deployment
+
+* Render
+
+### Version Control
+
+* GitHub
+
+---
+
+## 🚀 Features
+
+### Support Session Dashboard
+
+* Agent video panel
+* Customer panel
+* Session token display
+* Support status indicator
+
+### Communication
+
+* Chat messaging
+* Invite link sharing
+* File attachment selection
+
+### Media Controls
+
+* Microphone On/Off
+* Camera On/Off
+* End Call
+
+---
+
+## 📂 Project Structure
 
 video-support-platform/
 
@@ -37,13 +73,19 @@ video-support-platform/
 
 │ ├── css/
 
+│ │ └── style.css
+
 │ ├── js/
+
+│ │ └── app.js
 
 │ ├── index.html
 
 │ ├── agent.html
 
-│ └── customer.html
+│ ├── customer.html
+
+│ └── support-room.html
 
 ├── server.js
 
@@ -51,31 +93,51 @@ video-support-platform/
 
 └── README.md
 
-## How to Run
+---
 
-1. Clone the repository
+## ⚙ Installation
 
-2. Install dependencies
+1. Clone Repository
+
+git clone https://github.com/LakshyaSaraswat07/video-support-platform
+
+2. Install Dependencies
 
 npm install
 
-3. Start server
+3. Start Application
 
 node server.js
 
-4. Open browser
+4. Open Browser
 
 http://localhost:3000
 
-## Future Improvements
+---
 
-* Real-time two-way video communication
-* Session history database
-* Authentication
-* File sharing
-* Call recording
-* Admin dashboard
+## 🌐 Live Demo
 
-## Author
+Render Deployment:
+
+https://video-support-platform.onrender.com
+
+GitHub Repository:
+
+https://github.com/LakshyaSaraswat07/video-support-platform
+
+---
+
+## ⚠ Known Limitations
+
+* Customer video is currently represented by a placeholder.
+* File upload selection is available but files are not transferred.
+* Chat is prototype-level implementation.
+* Designed for demonstration and hackathon purposes.
+
+---
+
+## 👨‍💻 Developed By
 
 Lakshya Saraswat
+
+AtomQuest Hackathon Submission 2026
